@@ -1,0 +1,33 @@
+0 verbose cli C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\npm\bin\npm-cli.js
+1 info using npm@11.19.0
+2 info using node@v24.21.0
+3 silly config load:file:C:\Program Files\nodejs\node_modules\npm\npmrc
+4 silly config load:file:C:\Users\arsha\Desktop\braus_nextjs\.npmrc
+5 silly config load:file:C:\Users\arsha\.npmrc
+6 silly config load:file:C:\Users\arsha\AppData\Roaming\npm\etc\npmrc
+7 verbose title npm install
+8 verbose argv "install" "--package-lock-only" "--ignore-scripts" "--offline" "--cache" ".npm-cache"
+9 verbose logfile logs-max:10 dir:C:\Users\arsha\Desktop\braus_nextjs\.npm-cache\_logs\2026-11-12T16_38_01_788Z-
+10 verbose logfile C:\Users\arsha\Desktop\braus_nextjs\.npm-cache\_logs\2026-11-12T16_38_01_788Z-debug-0.log
+11 silly logfile done cleaning log files
+12 silly packumentCache heap:4496293888 maxSize:1124073472 maxEntrySize:562036736
+13 silly idealTree buildDeps
+14 http cache https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.3.2.tgz 1ms (cache hit)
+15 silly tarball no local data for https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.3.2.tgz. Extracting by manifest.
+16 http fetch GET https://registry.npmjs.org/npm attempt 1 failed with EACCES
+17 verbose stack Error: request to https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.3.2.tgz failed: cache mode is 'only-if-cached' but no cached response is available.
+17 verbose stack     at cacheFetch (C:\Program Files\nodejs\node_modules\npm\node_modules\make-fetch-happen\lib\cache\index.js:12:13)
+17 verbose stack     at async fetch (C:\Program Files\nodejs\node_modules\npm\node_modules\make-fetch-happen\lib\fetch.js:98:7)
+18 error code ENOTCACHED
+19 error request to https://registry.npmjs.org/@tailwindcss/oxide-wasm32-wasi/-/oxide-wasm32-wasi-4.3.2.tgz failed: cache mode is 'only-if-cached' but no cached response is available.
+20 silly unfinished npm timer reify 1794501484584
+21 silly unfinished npm timer reify:loadTrees 1794501484584
+22 silly unfinished npm timer idealTree:buildDeps 1794501486705
+23 silly unfinished npm timer idealTree:node_modules/@tailwindcss/oxide-wasm32-wasi 1794501486726
+24 verbose cwd C:\Users\arsha\Desktop\braus_nextjs
+25 verbose os Windows_NT 10.0.26300
+26 verbose node v24.21.0
+27 verbose npm  v11.19.0
+28 verbose exit 1
+29 verbose code 1
+30 error A complete log of this run can be found in: C:\Users\arsha\Desktop\braus_nextjs\.npm-cache\_logs\2026-11-12T16_38_01_788Z-debug-0.log

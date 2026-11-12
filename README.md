@@ -26,7 +26,6 @@
   <a href="https://cwa.run/liveblocks"><img src="https://img.shields.io/badge/Liveblocks-111111?style=for-the-badge" alt="Liveblocks" /></a>&nbsp;
   <a href="https://cwa.run/neon"><img src="https://img.shields.io/badge/Neon-00E599?style=for-the-badge&logo=neon&logoColor=black" alt="Neon" /></a>&nbsp;
   <a href="https://cwa.run/clerk"><img src="https://img.shields.io/badge/Clerk-6C47FF?style=for-the-badge&logo=clerk&logoColor=white" alt="Clerk" /></a>&nbsp;
-  <a href="https://cwa.run/sentry"><img src="https://img.shields.io/badge/Sentry-362D59?style=for-the-badge&logo=sentry&logoColor=white" alt="Sentry" /></a>&nbsp;
   <a href="https://cwa.run/railway"><img src="https://img.shields.io/badge/Railway-0B0D0E?style=for-the-badge&logo=railway&logoColor=white" alt="Railway" /></a>
 </p>
 
@@ -76,8 +75,6 @@ Each chapter has a matching branch so you can check out the code at any point in
 | `chapter-20-email-node` | Resend email node |
 | `chapter-21-console-panel` | Run console panel |
 | `chapter-22-session-replay` | Browserbase session replay |
-| `chapter-23-billing` | Clerk Billing and Pro features |
-| `chapter-24-sentry-setup` | Sentry monitoring setup |
 | `chapter-25-polish` | Final product polish |
 
 ```bash
@@ -126,7 +123,7 @@ git checkout chapter-16-browserbase-setup  # example: jump to Browserbase setup
     </td>
     <td width="50%" valign="top">
       <strong>SaaS-ready foundation</strong><br />
-      Ship with Clerk Billing gates, Resend email nodes, and Sentry monitoring.
+      Ship with Resend email nodes.
     </td>
   </tr>
 </table>
@@ -158,7 +155,6 @@ git checkout chapter-16-browserbase-setup  # example: jump to Browserbase setup
 - [Liveblocks](https://cwa.run/liveblocks) project
 - [Browserbase](https://cwa.run/browserbase) account
 - [Resend](https://resend.com/) account
-- Optional [Sentry](https://cwa.run/sentry) project for error monitoring and source maps
 
 ### 1. Clone and install
 
@@ -197,16 +193,11 @@ LIVEBLOCKS_SECRET_KEY=
 BROWSERBASE_API_KEY=
 RESEND_API_KEY=
 
-NEXT_PUBLIC_SENTRY_DSN=
-SENTRY_DSN=
-SENTRY_AUTH_TOKEN=
 ```
 
 ### 3. Configure Clerk
 
 Create a Clerk application and enable Organizations. The dashboard requires an active organization, and every workflow is scoped to the current organization.
-
-To enable paid features, configure Clerk Billing with an organization plan whose slug is exactly `pro`. Agent nodes and Browserbase session replay check this plan in both the UI and server-side actions.
 
 ### 4. Set up the database
 
@@ -276,7 +267,7 @@ railway up --detach -m "Initial deployment"
 
 ### 2. Add production variables
 
-Copy the values from `.env.local` into the Railway service variables. Use production credentials for Clerk, Neon, Trigger.dev, Liveblocks, Browserbase, Resend, and Sentry.
+Copy the values from `.env.local` into the Railway service variables. Use production credentials for Clerk, Neon, Trigger.dev, Liveblocks, Browserbase, and Resend.
 
 ```bash
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
@@ -295,12 +286,7 @@ LIVEBLOCKS_SECRET_KEY=
 BROWSERBASE_API_KEY=
 RESEND_API_KEY=
 
-NEXT_PUBLIC_SENTRY_DSN=
-SENTRY_DSN=
-SENTRY_AUTH_TOKEN=
 ```
-
-`SENTRY_AUTH_TOKEN` is only required when uploading source maps during the production build.
 
 ### 3. Prepare production services
 
@@ -354,7 +340,7 @@ flowchart LR
 ```text
 app/
 ├── (auth)/                     # Clerk sign-in, sign-up, and organization selection
-├── (dashboard)/                # Workflow dashboard, editor, and billing page
+├── (dashboard)/                # Workflow dashboard and editor
 └── api/
     ├── liveblocks/             # Liveblocks authentication and user resolution
     └── replays/                # Browserbase recording proxy
@@ -364,7 +350,7 @@ components/
 features/
 └── workflows/
     ├── components/             # Canvas, toolbar, inspector, console, and replay UI
-    ├── hooks/                  # Billing plan and graph connection hooks
+    ├── hooks/                  # Graph connection hooks
     ├── lib/                    # Validation, interpolation, and workflow utilities
     ├── nodes/                  # Node registry and executor implementations
     ├── tasks/                  # Trigger.dev workflow runner
@@ -406,7 +392,6 @@ lib/
 | Trigger.dev | Durable workflow execution, retries, cancellation, and live run metadata |
 | Stagehand | AI-powered browser actions, extraction, observation, and agents |
 | Browserbase | Managed browser sessions, model gateway, and session recordings |
-| Clerk | Authentication, organizations, and subscription plans |
+| Clerk | Authentication and organizations |
 | Neon and Drizzle | Serverless Postgres and typed database access |
 | Resend | Email workflow execution |
-| Sentry | Frontend, server, edge, and background-task monitoring |
